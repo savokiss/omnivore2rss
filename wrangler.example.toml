@@ -3,3 +3,4 @@ compatibility_date = "2023-01-01"
 
 [vars]
 OMNIVORE_AUTH_TOKEN = "Your API token here"
+PUBLIC_MODE = ""
