@@ -1,6 +1,6 @@
 # Omnivore2RSS
 
-A simple project to turn your [Omnivore](https://omnivore.app/) inbox into a RSS feed.
+A simple project to turn your [Omnivore](https://omnivore.app/) inbox into an RSS feed.
 
 This is a cloudflare worker project that can be easily deployed at the edge.
 
