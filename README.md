@@ -8,6 +8,7 @@ This is a cloudflare worker project that can be easily deployed at the edge.
 - Using Cloudflare Workers
 - One Click Deployment
 - Public Mode, get your feed instantly through <https://o2rss.detools.dev/public?token=yourtoken>
+- Official Search Supports, see [Params](#params)
 
 ## Deployment
 
@@ -54,6 +55,32 @@ https://<your-worker-domain>/feed
 ```
 
 Add this url to your RSS reader, then enjoy reading articles in one place!
+
+## Params
+
+### Limit
+The default limit is 10, you can change it like this:
+
+```bash
+https://<your-worker-domain>/feed?limit=20
+```
+
+### Query
+The `query` is the same from the official, you can find the `query string` on your omnivore inbox page's top **input box**.
+
+```bash
+https://<your-worker-domain>/feed?query=in:inbox
+```
+
+Avaliable Queries:
+
+- `in:inbox`
+- `in:inbox sort:read-desc is:reading`
+- `in:library`
+- `no:label`
+...
+
+Plus all your custom labels, it's the same thing.
 
 ## Develop
 ```

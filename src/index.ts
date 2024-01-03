@@ -12,7 +12,8 @@ type Bindings = {
 
 type OmniOptions = {
   reqUrl: string
-  limit?: number
+  limit?: number,
+  query?: string
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
@@ -32,14 +33,15 @@ app.get('/feed', async (c) => {
       msg: 'Public mode enabled, please use the /public endpoint.'
     })
   }
-  const { limit } = c.req.query()
+  const { limit, query = '' } = c.req.query()
   const omniUrl = c.env.OMNIVORE_API_URL ?? defaultUrl
   const token = c.env.OMNIVORE_AUTH_TOKEN
   // singleton
   const api = GraphQLFetcher.getInstance(omniUrl, token)
   const feed = await handleTransform(api, {
     reqUrl: c.req.url,
-    limit: parseInt(limit)
+    limit: parseInt(limit),
+    query
   })
   c.header('Content-Type', 'application/xml')
   return c.body(feed)
@@ -51,7 +53,7 @@ app.get('/public', async (c) => {
       msg: 'Public mode disabled, please use the /feed endpoint.'
     })
   }
-  const { token, limit } = c.req.query()
+  const { token, limit, query = '' } = c.req.query()
   if (!token) {
     return c.json({
       msg: 'In public mode, please provide a token, or you can deploy it yourself on cloudflare.'
@@ -62,15 +64,16 @@ app.get('/public', async (c) => {
   const api = new GraphQLFetcher(omniUrl, token)
   const feed = await handleTransform(api, {
     reqUrl: c.req.url,
-    limit: parseInt(limit)
+    limit: parseInt(limit),
+    query
   })
   c.header('Content-Type', 'application/xml')
   return c.body(feed)
 })
 
 async function handleTransform (api: GraphQLFetcher, options: OmniOptions) {
-  const { reqUrl, limit = 10 } = options
-  const data = await api.request(undefined, limit, '')
+  const { reqUrl, limit = 10, query = '' } = options
+  const data = await api.request(undefined, limit, query)
   const articles = data.data.search.edges
   const feed = convertArticlesToRSS(articles, reqUrl)
   return feed
