@@ -1,7 +1,8 @@
 {
   "scripts": {
     "dev": "wrangler dev src/index.ts",
-    "deploy": "wrangler deploy --minify src/index.ts"
+    "deploy": "cp wrangler.private.toml wrangler.toml && wrangler deploy --minify src/index.ts",
+    "deploy:public": "cp wrangler.public.toml wrangler.toml && wrangler deploy --minify src/index.ts"
   },
   "dependencies": {
     "hono": "^3.7.2",

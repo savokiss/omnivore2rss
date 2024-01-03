@@ -6,5 +6,6 @@ dist
 # Change them to your taste:
 wrangler.toml
 wrangler.public.toml
+wrangler.private.toml
 package-lock.json
 yarn.lock
