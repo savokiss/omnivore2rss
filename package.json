@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "hono": "^3.7.2",
-    "mime": "4.0.0-beta.1"
+    "mime": "4.0.1"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230914.0",

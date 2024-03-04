@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.7.2
     version: 3.7.2
   mime:
-    specifier: 4.0.0-beta.1
-    version: 4.0.0-beta.1
+    specifier: 4.0.1
+    version: 4.0.1
 
 devDependencies:
   '@cloudflare/workers-types':
@@ -506,8 +506,8 @@ packages:
     hasBin: true
     dev: true
 
-  /mime@4.0.0-beta.1:
-    resolution: {integrity: sha512-8/p99P1RV17prytee/A6D+8shNqdDzyvGJ/CVfiuXwh4cTsv3P3qGyaYSx2hdqnqbKKqYUfTC5zAjCtcd1BShw==}
+  /mime@4.0.1:
+    resolution: {integrity: sha512-5lZ5tyrIfliMXzFtkYyekWbtRXObT9OWa8IwQ5uxTBDHucNNwniRqo0yInflj+iYi5CBa6qxadGzGarDfuEOxA==}
     engines: {node: '>=16'}
     hasBin: true
     dev: false
